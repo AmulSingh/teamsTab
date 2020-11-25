@@ -332,6 +332,16 @@ export class OnemoretabTab extends TeamsBaseComponent<IOnemoretabTabProps, IOnem
             });
         }
     }
+    public getAuthToken = () => {
+        microsoftTeams.authentication.getAuthToken({
+            successCallback: (result) => {
+                this.updateUI(result);
+            },
+            failureCallback: function (error) {
+                this.updateUI(error);
+            }
+        });
+    }
     /**
      * The render() method to create the UI of the tab
      */
@@ -358,6 +368,7 @@ export class OnemoretabTab extends TeamsBaseComponent<IOnemoretabTabProps, IOnem
                                 <Button onClick={this.readMail}>read mail</Button>
                                 <Button onClick={this.createGroup}>create group</Button>
                                 <Button onClick={this.createTeam}>create team</Button>
+                                <Button onClick={this.getAuthToken}>get Auth token</Button>
                             </div>
 
                             <div>
